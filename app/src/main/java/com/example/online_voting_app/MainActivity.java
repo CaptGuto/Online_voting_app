@@ -27,4 +27,6 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(this, registerActivity.class);
         startActivity(i);
     }
+
+    //I think this is working
 }
