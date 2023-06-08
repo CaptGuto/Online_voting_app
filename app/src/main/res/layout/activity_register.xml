@@ -5,28 +5,95 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_for_activities"
+    android:fontFamily="sans-serif-black"
     tools:context=".registerActivity">
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:translationY="-50dp"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="150dp"
+        android:layout_marginEnd="80dp"
+        android:translationY="-50dp"
+        app:boxBackgroundColor="#739188"
+        app:boxStrokeColor="#D8D9D9"
+        app:hintTextColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:boxStrokeColor="@color/black"
-        app:hintTextColor="@color/black"
-        >
+
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/name_input_field"
             android:layout_width="match_parent"
             android:layout_height="61dp"
-            android:hint="hint"
+            android:hint="Name"
+            android:textColor="#000000"
             android:textCursorDrawable="@color/black"
+            android:textSize="19dp"
             />
+
     </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="397dp"
+        android:layout_marginEnd="80dp"
+        android:translationY="-420dp"
+        app:boxBackgroundColor="#739188"
+        app:boxStrokeColor="#D8D9D9"
+        app:hintTextColor="#ffffff"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/id_input_field"
+            android:layout_width="match_parent"
+            android:layout_height="61dp"
+            android:hint="ID"
+            android:textColor="#000000"
+            android:textCursorDrawable="@color/black"
+            android:textSize="19dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button3"
+        android:layout_width="match_parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="180dp"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:fontFamily="sans-serif-black"
+        android:textSize="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.062"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.678"
+        android:background="@drawable/buttonstyle"
+        android:textColor="#ffffff"
+        />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="REGISTER"
+        android:textSize="32dp"
+        android:textColor="#0d5746"
+        android:fontFamily="sans-serif-smallcaps"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.769"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.233" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
