@@ -13,7 +13,7 @@ import java.security.SecureRandom;
 public class registerActivity extends AppCompatActivity {
 
     public Button registerButton;
-    public EditText name, id;
+    public EditText fnameInput, lnameInput, idInput;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,23 +21,55 @@ public class registerActivity extends AppCompatActivity {
     }
 
     //Defining method to take input and lead to the next activity also passing the data
-    public void myOnClick (View registerButton) {
-        name = (EditText) findViewById(R.id.name_input_field);
-        id = (EditText) findViewById(R.id.id_input_field);
+    public void registration (View registerButton) {
+
+        dbconnection.Initiate();
+
+        fnameInput = (EditText) findViewById(R.id.fname_input_field);
+        lnameInput = (EditText) findViewById(R.id.lname_input_feild);
+        idInput = (EditText) findViewById(R.id.Id_input_feild);
 
         //Generating password using method defined below
         String myPassword = generatePassword(10);
 
         Intent i = new Intent (registerActivity.this, viewOneTimePassword.class);
 
-        //Passing the name, id, and password to next activity
-        i.putExtra("name", name.getText().toString());
+        String fname = fnameInput.getText().toString();
+        String lname = lnameInput.getText().toString();
+        String ID = idInput.getText().toString();;
 
-        i.putExtra("ID", id.getText().toString());
 
-        i.putExtra("Password", myPassword);
+        if(fname.isEmpty() || lname.isEmpty() ||ID.isEmpty() ){
+            Toast.makeText(this, "Please input both your first and last name", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            dbconnection.Initiate();
 
-        startActivity(i);
+
+            registerDb registeration = new registerDb(fname,lname, ID);
+            boolean citizeExists = registeration.checkCitizenExists();
+
+            if(citizeExists){ // if the citizenExist returns true(meaning with the above initiation of the registerdb class it has found id, fname, lname for it
+                Toast.makeText(this, "The check was successful", Toast.LENGTH_SHORT).show();
+                registeration.registerVoter();
+
+                //Passing the name, id, and password to next activity
+                i.putExtra("fname", fname);
+
+                i.putExtra("lname", lname);
+
+                i.putExtra("ID", ID);
+
+                i.putExtra("Password", myPassword);
+
+                startActivity(i);
+            }
+            else{
+                Toast.makeText(this, "There was no match", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+
 
     }
 

@@ -16,7 +16,7 @@ public class viewOneTimePassword extends AppCompatActivity {
         setContentView(R.layout.activity_view_one_time_password);
 
         //Retrieving user input from the previous activity and assigning them to string references
-        String userName = getIntent().getStringExtra("name");
+        String userName = getIntent().getStringExtra("fname") + "  " + getIntent().getStringExtra("lname");
         String userID = getIntent().getStringExtra("ID");
         String OTP = getIntent().getStringExtra("Password");
 
