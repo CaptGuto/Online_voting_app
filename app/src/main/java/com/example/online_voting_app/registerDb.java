@@ -49,6 +49,7 @@ public class registerDb {
             PreparedStatement statement = connected.prepareStatement(sql);
             statement.setString(1, ID);
             ResultSet result = statement.executeQuery();
+
             if (result.next()) {
                 String fName = result.getString("fname");
                 Log.i("thesuccess",fName);
@@ -57,7 +58,7 @@ public class registerDb {
                 String id = result.getString("id");
                 Log.i("thesuccess", id);
 
-                // TODO: 6/13/2023 trim the white spaces 
+                // TODO: 6/13/2023 trim the white spaces
                 if (fName.equals(this.fname) && lName.equals(this.lname) && id.equals(this.ID)) {
                     Log.i("thesuccess", "thispoint is reached ");
                     this.id_found = true;

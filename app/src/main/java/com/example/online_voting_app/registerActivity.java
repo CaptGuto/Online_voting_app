@@ -42,6 +42,7 @@ public class registerActivity extends AppCompatActivity {
         if(fname.isEmpty() || lname.isEmpty() ||ID.isEmpty() ){
             Toast.makeText(this, "Please input both your first and last name", Toast.LENGTH_SHORT).show();
         }
+        // TODO: 6/13/2023 look for other conditions that might break it  
         else{
             dbconnection.Initiate();
 
