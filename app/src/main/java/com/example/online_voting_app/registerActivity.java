@@ -23,7 +23,7 @@ public class registerActivity extends AppCompatActivity {
     //Defining method to take input and lead to the next activity also passing the data
     public void registration (View registerButton) {
 
-        dbconnection.Initiate();
+        //dbconnection.Initiate();
 
         fnameInput = (EditText) findViewById(R.id.fname_input_field);
         lnameInput = (EditText) findViewById(R.id.lname_input_feild);
@@ -34,18 +34,17 @@ public class registerActivity extends AppCompatActivity {
 
         Intent i = new Intent (registerActivity.this, viewOneTimePassword.class);
 
-        String fname = fnameInput.getText().toString();
-        String lname = lnameInput.getText().toString();
-        String ID = idInput.getText().toString();;
+        String fname = fnameInput.getText().toString().toLowerCase();
+        String lname = lnameInput.getText().toString().toLowerCase();
+        String ID = idInput.getText().toString().toUpperCase();
 
 
         if(fname.isEmpty() || lname.isEmpty() ||ID.isEmpty() ){
-            Toast.makeText(this, "Please input both your first and last name", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please input both your first, last name and ID", Toast.LENGTH_SHORT).show();
         }
-        // TODO: 6/13/2023 look for other conditions that might break it  
+        // TODO: 6/13/2023 look for other conditions that might break it
         else{
             dbconnection.Initiate();
-
 
             registerDb registeration = new registerDb(fname,lname, ID);
             boolean citizeExists = registeration.checkCitizenExists();
