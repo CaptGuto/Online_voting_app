@@ -110,7 +110,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Id_input_feild"
+            android:id="@+id/otp_input_feild"
             android:layout_width="match_parent"
             android:layout_height="61dp"
             android:hint="ID"

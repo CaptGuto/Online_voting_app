@@ -27,12 +27,11 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/fname_input_field"
             android:layout_width="match_parent"
-            android:layout_height="61dp"
+            android:layout_height="41dp"
             android:hint="First Name"
             android:textColor="#000000"
             android:textCursorDrawable="@color/black"
-            android:textSize="19dp"
-            />
+            android:textSize="19dp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -54,7 +53,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/lname_input_feild"
             android:layout_width="match_parent"
-            android:layout_height="61dp"
+            android:layout_height="41dp"
             android:hint="Last Name"
             android:textColor="#000000"
             android:textCursorDrawable="@color/black"
@@ -96,10 +95,37 @@
         app:layout_constraintVertical_bias="0.233" />
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/id_input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="460dp"
+        android:layout_marginEnd="80dp"
+        android:translationY="-420dp"
+        app:boxBackgroundColor="#739188"
+        app:boxStrokeColor="#D8D9D9"
+        app:hintTextColor="#ffffff"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/id_input_feild"
+            android:layout_width="match_parent"
+            android:layout_height="41dp"
+            android:layout_weight="1"
+            android:hint="ID Number"
+            android:textColor="#000000"
+            android:textCursorDrawable="@color/black"
+            android:textSize="19dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="80dp"
+        android:layout_marginTop="30dp"
         android:translationY="130dp"
         app:boxBackgroundColor="#739188"
         app:boxStrokeColor="#D8D9D9"
@@ -110,9 +136,9 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Id_input_feild"
+            android:id="@+id/otp_input_feild"
             android:layout_width="match_parent"
-            android:layout_height="61dp"
+            android:layout_height="41dp"
             android:hint="One Time Password"
             android:textColor="#000000"
             android:textCursorDrawable="@color/black"

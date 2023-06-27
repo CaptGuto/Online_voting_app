@@ -27,7 +27,7 @@ public class registerActivity extends AppCompatActivity {
 
         fnameInput = (EditText) findViewById(R.id.fname_input_field);
         lnameInput = (EditText) findViewById(R.id.lname_input_feild);
-        idInput = (EditText) findViewById(R.id.Id_input_feild);
+        idInput = (EditText) findViewById(R.id.otp_input_feild);
 
         //Generating password using method defined below
         String myPassword = generatePassword(10);
