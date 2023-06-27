@@ -14,10 +14,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void launchVote(View V){
+    public void launchLogin(View V){
         //launch the vote activity
 
-        Intent i = new Intent(this, voteActivity.class);
+        Intent i = new Intent(this, OurLoginActivity2.class);
         startActivity(i);
     }
 
