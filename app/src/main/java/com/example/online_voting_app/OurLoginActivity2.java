@@ -32,6 +32,5 @@ public class OurLoginActivity2 extends AppCompatActivity {
         }
 
 
-
     }
 }

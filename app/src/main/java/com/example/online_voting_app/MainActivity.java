@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void launchLogin(View V){
-        //launch the vote activity
+        //launch the login activity
 
         Intent i = new Intent(this, OurLoginActivity2.class);
         startActivity(i);
