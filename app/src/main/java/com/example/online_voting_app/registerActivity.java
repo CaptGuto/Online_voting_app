@@ -2,12 +2,15 @@ package com.example.online_voting_app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.*;
 import android.widget.*;
 
 import java.security.SecureRandom;
+import java.sql.SQLException;
 
 
 public class registerActivity extends AppCompatActivity {
@@ -21,7 +24,7 @@ public class registerActivity extends AppCompatActivity {
     }
 
     //Defining method to take input and lead to the next activity also passing the data
-    public void registration (View registerButton) {
+    public void registration (View registerButton) throws SQLException {
 
         //dbconnection.Initiate();
 
@@ -34,9 +37,9 @@ public class registerActivity extends AppCompatActivity {
 
         Intent i = new Intent (registerActivity.this, viewOneTimePassword.class);
 
-        String fname = fnameInput.getText().toString().toLowerCase();
-        String lname = lnameInput.getText().toString().toLowerCase();
-        String ID = idInput.getText().toString().toUpperCase();
+        String fname = fnameInput.getText().toString().toLowerCase().trim();
+        String lname = lnameInput.getText().toString().toLowerCase().trim();
+        String ID = idInput.getText().toString().toUpperCase().trim();
 
 
         if(fname.isEmpty() || lname.isEmpty() ||ID.isEmpty() ){
@@ -51,18 +54,30 @@ public class registerActivity extends AppCompatActivity {
 
             if(citizeExists){ // if the citizenExist returns true(meaning with the above initiation of the registerdb class it has found id, fname, lname for it
                 Toast.makeText(this, "The check was successful", Toast.LENGTH_SHORT).show();
-                registeration.registerVoter();
 
-                //Passing the name, id, and password to next activity
-                i.putExtra("fname", fname);
 
-                i.putExtra("lname", lname);
+                // TODO: 6/27/2023 do the actual registering on the database
+                if(registeration.registerVoter(myPassword)){
+                    //Passing the name, id, and password to next activity
+                    i.putExtra("fname", fname);
 
-                i.putExtra("ID", ID);
+                    i.putExtra("lname", lname);
 
-                i.putExtra("Password", myPassword);
+                    i.putExtra("ID", ID);
 
-                startActivity(i);
+                    i.putExtra("Password", myPassword);
+
+
+
+                    // TODO: 6/27/2023 get the data of the citizens age and gender as an addition
+
+                    startActivity(i);
+                }
+
+                else{
+                    Toast.makeText(this, "Registration failed ! ", Toast.LENGTH_SHORT).show();
+                }
+
             }
             else{
                 Toast.makeText(this, "There was no match", Toast.LENGTH_SHORT).show();
@@ -76,7 +91,7 @@ public class registerActivity extends AppCompatActivity {
     private static String generatePassword (int length)
     {
         //defining the list of characters the password can contain
-        final String charList = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%";
+        final String charList = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
         SecureRandom random = new SecureRandom();
         StringBuilder password = new StringBuilder();
@@ -90,5 +105,12 @@ public class registerActivity extends AppCompatActivity {
         }
 
         return password.toString();
+    }
+
+    public static void  toster(Context context, String message) {
+
+        Log.i("thesuccess", "this method has been called");
+        Toast.makeText(context, "The check was successful", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
 }

@@ -12,18 +12,15 @@ public class dbconnection {
     public static Connection Initiate() {
 
         Log.i("thesuccess", "this method has been called");
-        String url = "jdbc:mysql://10.9.221.102/LMIS";
+        String url = "jdbc:mysql://10.6.204.7/VOTE";
         String username = "voting";
-        String password = "qwertyuiop";
+        String password = "qwertyuiop0987654321";
         Connection conn = null;
         try {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
 
             conn = DriverManager.getConnection(url, username, password);
-            System.out.println("Connection successful!");
-
-
             Log.i("thesuccess", "connection success");
 
             return conn;

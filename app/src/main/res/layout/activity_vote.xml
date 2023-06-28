@@ -59,7 +59,7 @@
         android:background="@drawable/buttonstyle"
         android:elevation="5dp"
         android:fontFamily="sans-serif-black"
-        android:onClick="launchVote"
+        android:onClick="sendVote"
         android:text="VOTE"
         android:textColor="#ffffff"
         android:textFontWeight="888"
