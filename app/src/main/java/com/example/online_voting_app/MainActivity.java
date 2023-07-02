@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,5 +29,21 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void launchResult (View v) {
+        //launching the view result activity
+        boolean timeIsRight = true;
+
+        if (timeIsRight) {
+            Intent i = new Intent(this, viewResultActivity.class);
+            startActivity(i);
+
+            //TODO: display the candidate with the highest count by retrieving the name
+            // from the database and generating a text view here saying "winner is ___!"
+        }
+        else {
+            Toast.makeText(this, "Results are not available now.", Toast.LENGTH_SHORT).show();
+        }
+
+    }
     //I think this is working
 }
