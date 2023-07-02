@@ -7,6 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -31,14 +36,29 @@ public class MainActivity extends AppCompatActivity {
 
     public void launchResult (View v) {
         //launching the view result activity
-        boolean timeIsRight = true;
+        boolean timeIsRight = false;
+
+        String sql = "select voteEnd from timer";
+        Connection connected;
+        connected = dbconnection.Initiate();
+
+        try {
+            PreparedStatement statement = connected.prepareStatement(sql);
+            ResultSet result = statement.executeQuery();
+
+            if (result.next()) {
+                timeIsRight = result.getBoolean("VoteEnd");
+
+            }
+        }catch (SQLException e){
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+
 
         if (timeIsRight) {
             Intent i = new Intent(this, viewResultActivity.class);
             startActivity(i);
 
-            //TODO: display the candidate with the highest count by retrieving the name
-            // from the database and generating a text view here saying "winner is ___!"
         }
         else {
             Toast.makeText(this, "Results are not available now.", Toast.LENGTH_SHORT).show();
@@ -46,4 +66,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
     //I think this is working
+
+    public void launchAdminLogin(View v){
+        Intent i = new Intent(this, AdminLoginActivity.class);
+        startActivity(i);
+    }
 }

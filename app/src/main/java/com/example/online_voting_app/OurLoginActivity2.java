@@ -10,6 +10,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.sql.Connection;
+
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class OurLoginActivity2 extends AppCompatActivity {
@@ -32,7 +35,6 @@ public class OurLoginActivity2 extends AppCompatActivity {
         String lname = lnameInput.getText().toString().toLowerCase().trim();
         String id = idInput.getText().toString().toUpperCase().trim();
         String password = otpInput.getText().toString().trim();
-
 
 
         //based on whether user exists in database or not, handle the onClick
@@ -63,7 +65,10 @@ public class OurLoginActivity2 extends AppCompatActivity {
         }
         else if (returned_message == 3) {
             Intent i = new Intent(this, voteActivity.class);
-            startActivity(i); // TODO: 7/2/2023 this has to return a boolean value to check if the vote was success full bez check it
+            startActivity(i);
+
+                Log.i("thesuccess", "this returns true");
+                userHasVoted(id);
 
             //if it returns true update the registered tables voted to true so that the user doesn't vote again!!!!!!!
             finish();
@@ -71,11 +76,34 @@ public class OurLoginActivity2 extends AppCompatActivity {
         else if (returned_message == 4){
             Toast.makeText(this, "The credentials you provided is incorrect ", Toast.LENGTH_SHORT).show();
         }
-        else {
+        else { ////Don't think this code matters
             //TODO: display message to user that they have to register
             Toast.makeText(getApplicationContext(), "Please register first.", Toast.LENGTH_SHORT).show();
 
         }
+
+    }
+
+    /////Don't think this is it's place!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    public void userHasVoted(String theid) {
+        Connection conn;
+        conn = dbconnection.Initiate();
+
+        Log.i("thesuccess", theid);
+
+        try{
+            String sql = "UPDATE registered SET voted = ? WHERE id = ?";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setBoolean(1, true);
+            statement.setString(2,theid);
+
+            int rowsAffected = statement.executeUpdate();
+
+        }catch (SQLException e){
+            Log.i("thesuccess", e.getMessage());
+        }
+
+
 
 
     }

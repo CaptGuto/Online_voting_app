@@ -64,7 +64,7 @@ public class registerDb {
 
         try {
             connected = connect.Initiate();
-            String sql = "SELECT fname, lname, id FROM citizen WHERE id = ?";
+            String sql = "SELECT fname, lname, id FROM citizen WHERE username = ?";
             PreparedStatement statement = connected.prepareStatement(sql);
             statement.setString(1, ID);
             ResultSet result = statement.executeQuery();
@@ -75,7 +75,6 @@ public class registerDb {
                 String id = result.getString("id");
 
                 // TODO: 6/27/2023 check weather the person is allowed to vote age
-                // TODO: 6/13/2023 trim the white spaces
 
                 if (fName.equals(this.fname) && lName.equals(this.lname) && id.equals(this.ID)) {
                     Log.i("thesuccess", "thispoint is reached ");

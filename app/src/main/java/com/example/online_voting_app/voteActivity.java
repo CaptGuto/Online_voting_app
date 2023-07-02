@@ -14,6 +14,7 @@ import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -26,6 +27,7 @@ import java.util.List;
 
 public class voteActivity extends AppCompatActivity {
     Connection conn;
+    public static boolean votsuccess = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,9 +128,10 @@ public class voteActivity extends AppCompatActivity {
        }catch (SQLException e){
            Log.i("thesuccess", e.getMessage());
        }
-
+        if(rowsAffected < 0){
+            Toast.makeText(this, "Vote Was not Successful", Toast.LENGTH_SHORT).show();
+        }
 
     }
-
 }
 

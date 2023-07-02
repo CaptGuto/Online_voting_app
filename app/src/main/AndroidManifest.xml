@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Online_Voting_App"
         tools:targetApi="31">
         <activity
+            android:name=".AddCandiate"
+            android:exported="false" />
+        <activity
             android:name=".adminActionsActivity"
             android:exported="false" />
         <activity
