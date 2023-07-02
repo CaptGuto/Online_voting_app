@@ -1,0 +1,72 @@
+C:\Users\user\AndroidStudioProjects\Online_Voting_App2\app\src\main\java\com\example\online_voting_app\voteActivity.java
+    Warning:Warning:line (3)[UNUSED_IMPORT] Unused import statement
+    Warning:Warning:line (13)[UNUSED_IMPORT] Unused import statement
+    Warning:Warning:line (24)[UNUSED_IMPORT] Unused import statement
+    Warning:Warning:line (39)Variable 'stmt' initializer 'null' is redundant
+    Warning:Warning:line (75)Result of 'RadioGroup.getCheckedRadioButtonId()' is ignored
+    Warning:Warning:line (83)Anonymous new View.OnClickListener() can be replaced with lambda
+    Warning:Warning:line (99)Variable 'dataget' is never used
+    Warning:Warning:line (100)Variable 'rowsAffected' is assigned but never accessed
+    Warning:Warning:line (122)The value 'statement2.executeUpdate()' assigned to 'rowsAffected' is never used
+C:\Users\user\AndroidStudioProjects\Online_Voting_App2\app\src\main\java\com\example\online_voting_app\registerDb.java
+    Warning:Warning:line (3)[UNUSED_IMPORT] Unused import statement
+    Warning:Warning:line (5)[UNUSED_IMPORT] Unused import statement
+    Warning:Warning:line (22)Field 'fname' may be 'final'
+    Warning:Warning:line (23)Field 'lname' may be 'final'
+    Warning:Warning:line (24)Field 'ID' may be 'final'
+    Warning:Warning:line (25)Private field 'password' is never assigned
+    Warning:Warning:line (28)Private field 'age' is never assigned
+    Warning:Warning:line (29)Private field 'gender' is never assigned
+    Warning:Warning:line (33)Method 'getFname()' is never used
+    Warning:Warning:line (37)Method 'getLname()' is never used
+    Warning:Warning:line (41)Method 'getID()' is never used
+    Warning:Warning:line (45)Method 'getPassword()' is never used
+    Warning:Warning:line (49)Method 'isId_found()' is never used
+    Warning:Warning:line (52)Method 'getAge()' is never used
+    Warning:Warning:line (56)Method 'getGender()' is never used
+    Warning:Warning:line (60)Instantiation of utility class 'dbconnection'
+    Warning:Warning:line (66)Static member 'com.example.online_voting_app.dbconnection.Initiate()' accessed via instance reference
+    Warning:Warning:line (114)Static member 'com.example.online_voting_app.dbconnection.Initiate()' accessed via instance reference
+    Warning:Warning:line (128)Variable 'did_it_work' is assigned but never accessed
+    Warning:Warning:line (130)Condition 'dataget' is always 'true'
+    Warning:Warning:line (130)The value '"true"' assigned to 'did_it_work' is never used
+    Warning:Warning:line (130)The value '"false"' assigned to 'did_it_work' is never used
+    Warning:Warning:line (165)'if' statement can be simplified
+    Warning:Warning:line (170)Exception 'java.sql.SQLException' is never thrown in the method
+    Warning:Warning:line (172)'Connection' used without 'try'-with-resources statement
+    Warning:Warning:line (198)'voted == true' can be simplified to 'voted'
+C:\Users\user\AndroidStudioProjects\Online_Voting_App2\app\src\main\java\com\example\online_voting_app\OurLoginActivity2.java
+    Warning:Warning:line (7)[UNUSED_IMPORT] Unused import statement
+    Warning:Warning:line (9)[UNUSED_IMPORT] Unused import statement
+    Warning:Warning:line (41)Variable 'exists' is never used
+C:\Users\user\AndroidStudioProjects\Online_Voting_App2\app\src\main\java\com\example\online_voting_app\registerActivity.java
+    Warning:Warning:line (18)Field 'registerButton' is never used
+    Warning:Warning:line (31)Casting 'findViewById(...)' to 'EditText' is redundant
+    Warning:Warning:line (32)Casting 'findViewById(...)' to 'EditText' is redundant
+    Warning:Warning:line (33)Casting 'findViewById(...)' to 'EditText' is redundant
+    Warning:Warning:line (50)'Connection' used without 'try'-with-resources statement
+    Warning:Warning:line (91)Actual value of parameter 'length' is always '10'
+    Warning:Warning:line (110)Method 'toster(android.content.Context, java.lang.String)' is never used
+C:\Users\user\AndroidStudioProjects\Online_Voting_App2\app\src\main\res\layout\activity_vote.xml
+    Warning:Warning:line (17)Hardcoded string "Please choose one", should use `@string` resource
+    Warning:Warning:line (19)Should use "`sp`" instead of "`dp`" for text sizes
+    Warning:Warning:line (31)Hardcoded string "VOTE", should use `@string` resource
+    Warning:Warning:line (33)Should use "`sp`" instead of "`dp`" for text sizes
+    Warning:Warning:line (41)XML tag has empty body
+    Warning:Warning:line (62)Method 'sendVote' in 'voteActivity' has incorrect signature
+    Warning:Warning:line (63)Hardcoded string "VOTE", should use `@string` resource
+    Warning:Warning:line (65)Attribute `textFontWeight` is only used in API level 28 and higher (current min is 23)
+    Warning:Warning:line (66)Should use "`sp`" instead of "`dp`" for text sizes
+C:\Users\user\AndroidStudioProjects\Online_Voting_App2\app\src\main\res\layout\activity_our_login2.xml
+    Warning:Warning:line (31)Hardcoded string "First Name", should use `@string` resource
+    Warning:Warning:line (34)Should use "`sp`" instead of "`dp`" for text sizes
+    Warning:Warning:line (57)Hardcoded string "Last Name", should use `@string` resource
+    Warning:Warning:line (60)Should use "`sp`" instead of "`dp`" for text sizes
+    Warning:Warning:line (72)Hardcoded string "LOG IN", should use `@string` resource
+    Warning:Warning:line (74)Should use "`sp`" instead of "`dp`" for text sizes
+    Warning:Warning:line (86)Hardcoded string "LOG IN", should use `@string` resource
+    Warning:Warning:line (87)Should use "`sp`" instead of "`dp`" for text sizes
+    Warning:Warning:line (117)Hardcoded string "ID Number", should use `@string` resource
+    Warning:Warning:line (120)Should use "`sp`" instead of "`dp`" for text sizes
+    Warning:Warning:line (142)Hardcoded string "One Time Password", should use `@string` resource
+    Warning:Warning:line (145)Should use "`sp`" instead of "`dp`" for text sizes
