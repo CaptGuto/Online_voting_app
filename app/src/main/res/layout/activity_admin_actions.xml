@@ -52,7 +52,7 @@
         android:background="@drawable/buttonstyle"
         android:elevation="5dp"
         android:fontFamily="sans-serif-black"
-        android:onClick="launchRegister"
+        android:onClick="launchAdjustTime"
         android:text="ADJUST TIME"
         android:textColor="#ffffff"
         android:textFontWeight="888"

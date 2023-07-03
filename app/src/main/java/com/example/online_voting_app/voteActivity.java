@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -85,8 +87,14 @@ public class voteActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 int selected_radiobutton = radioGroup.getCheckedRadioButtonId();
                 RadioButton radioButton = findViewById(selected_radiobutton);
+
+                /*ContextThemeWrapper ctw = new ContextThemeWrapper(context,)
+                Resources.Theme theme = context.getTheme();
+                radioButton.setTextColor(getResources().getColor(color.teal ));*/
+
                 String selectedCandidateName = radioButton.getText().toString();
                 Log.i("thesuccess",selectedCandidateName);
 

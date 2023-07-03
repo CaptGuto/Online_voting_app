@@ -64,7 +64,7 @@ public class registerDb {
 
         try {
             connected = connect.Initiate();
-            String sql = "SELECT fname, lname, id FROM citizen WHERE username = ?";
+            String sql = "SELECT fname, lname, id FROM citizen WHERE id = ?";
             PreparedStatement statement = connected.prepareStatement(sql);
             statement.setString(1, ID);
             ResultSet result = statement.executeQuery();

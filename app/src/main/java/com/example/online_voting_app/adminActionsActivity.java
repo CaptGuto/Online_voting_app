@@ -18,6 +18,11 @@ public class adminActionsActivity extends AppCompatActivity {
         Intent i = new Intent(this, AddCandiate.class);
         startActivity(i);
     }
+
+    public void launchAdjustTime(View v) {
+        Intent i = new Intent(this, adjustTimeActivity.class);
+        startActivity(i);
+    }
 }
 
 // TODO: 7/3/2023 We might add delete candidate 

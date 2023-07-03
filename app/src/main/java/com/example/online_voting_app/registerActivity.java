@@ -33,7 +33,7 @@ public class registerActivity extends AppCompatActivity {
         idInput = (EditText) findViewById(R.id.otp_input_feild);
 
         //Generating password using method defined below
-        String myPassword = generatePassword(10);
+        String myPassword = PasswordGenerator.generatePassword(10);
 
         Intent i = new Intent (registerActivity.this, viewOneTimePassword.class);
 
@@ -88,7 +88,7 @@ public class registerActivity extends AppCompatActivity {
 
     }
 
-    private static String generatePassword (int length)
+    /*private static String generatePassword (int length)
     {
         //defining the list of characters the password can contain
         final String charList = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -105,7 +105,7 @@ public class registerActivity extends AppCompatActivity {
         }
 
         return password.toString();
-    }
+    }*/
 
     public static void  toster(Context context, String message) {
 
