@@ -6,6 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 
+import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,6 +35,7 @@ public class voteActivity extends AppCompatActivity {
     Connection conn;
     public static boolean votsuccess = false;
 
+    @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +50,7 @@ public class voteActivity extends AppCompatActivity {
             stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT fname FROM candidate");
 
-            candidateList= new ArrayList<>();
+            candidateList = new ArrayList<>();
             while (rs.next()) {
                 candidateList.add(rs.getString("fname"));
             }
@@ -70,10 +75,13 @@ public class voteActivity extends AppCompatActivity {
         LinearLayout layout = findViewById(R.id.LinearLayout);
         layout.addView(radioGroup);
 
-        for (String item : candidateList)
-        {
+        for (String item : candidateList) {
             RadioButton radioButton = new RadioButton(this);
             radioButton.setText(item);
+            radioButton.setButtonTintList(ColorStateList.valueOf(color.teal));
+            radioButton.setTextColor(color.teal);
+            radioButton.setTextSize(22);
+            //radioButton.setBackgroundColor(color.black);
             radioGroup.addView(radioButton);
         }
         //radioGroup.getCheckedRadioButtonId();
@@ -96,50 +104,63 @@ public class voteActivity extends AppCompatActivity {
                 radioButton.setTextColor(getResources().getColor(color.teal ));*/
 
                 String selectedCandidateName = radioButton.getText().toString();
-                Log.i("thesuccess",selectedCandidateName);
+                Log.i("thesuccess", selectedCandidateName);
 
                 sendVote(selectedCandidateName);
-                // TODO: 7/2/2023 A success activity before it exits back 
-                finish();
+                // TODO: 7/2/2023 A success activity before it exits back
+                //finish();
             }
         });
     }
-    public void sendVote(String votedPerson){
+
+    public void sendVote(String votedPerson) {
 
         boolean dataget = false;
         int rowsAffected = 0;
 
         String sql = "select votes from votesforcandidates join candidate on votesforcandidates.id = candidate.id where candidate.fname = ?";
-       try {
-           int numberofvotes;
+        try {
+            int numberofvotes;
             Log.i("thesuccess", "this is reached");
-           PreparedStatement statement = conn.prepareStatement(sql);
-           statement.setString(1, votedPerson);
-           ResultSet result = statement.executeQuery();
-           Log.i("thesuccess", "this is reached");
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, votedPerson);
+            ResultSet result = statement.executeQuery();
+            Log.i("thesuccess", "this is reached");
 
-           if (result.next()) {
-               numberofvotes = result.getInt("votes");
-               Log.i("thesuccess", Integer.toString(numberofvotes));
-               numberofvotes++;
-               Log.i("thesuccess", "this is reached");
+            if (result.next()) {
+                numberofvotes = result.getInt("votes");
+                Log.i("thesuccess", Integer.toString(numberofvotes));
+                numberofvotes++;
+                Log.i("thesuccess", "this is reached");
 
-               String sql2 = "UPDATE votesforcandidates v JOIN candidate c ON v.id = c.id SET v.votes = ? WHERE c.fname = ?";
-               PreparedStatement statement2 = conn.prepareStatement(sql2);
-               statement2.setInt(1, numberofvotes);
-               statement2.setString(2, votedPerson);
+                String sql2 = "UPDATE votesforcandidates v JOIN candidate c ON v.id = c.id SET v.votes = ? WHERE c.fname = ?";
+                PreparedStatement statement2 = conn.prepareStatement(sql2);
+                statement2.setInt(1, numberofvotes);
+                statement2.setString(2, votedPerson);
 
-               rowsAffected = statement2.executeUpdate();
-                ///Here if row afected is > 1 return true to the perivious activity!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-           }
+                rowsAffected = statement2.executeUpdate();
 
-       }catch (SQLException e){
-           Log.i("thesuccess", e.getMessage());
-       }
-        if(rowsAffected < 0){
-            Toast.makeText(this, "Vote Was not Successful", Toast.LENGTH_SHORT).show();
+                if(rowsAffected > 0){
+                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                    builder.setMessage("Voted Successfully").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            //exiting too fast
+                            finish();
+                        }
+                    });
+                    AlertDialog alert = builder.create();
+                    alert.show();
+                }
+
+            }
+
+        } catch (SQLException e) {
+
+            if (rowsAffected < 0) {
+                Toast.makeText(this, "Vote Was not Successful", Toast.LENGTH_SHORT).show();
+            }
+
         }
-
     }
 }
 

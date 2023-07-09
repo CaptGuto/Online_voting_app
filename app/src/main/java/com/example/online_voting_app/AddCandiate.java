@@ -2,6 +2,8 @@ package com.example.online_voting_app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -21,7 +23,6 @@ public class AddCandiate extends AppCompatActivity {
     }
 
     public void AddCandidate(View v){
-        // TODO: 7/2/2023 Add a user to the candidate table
         Connection connect = dbconnection.Initiate();
 
 
@@ -37,14 +38,14 @@ public class AddCandiate extends AppCompatActivity {
         int rowsInserted = 0;
 
         try{
-                PreparedStatement statement = connect.prepareStatement(sql);
-                statement.setString(1, fname);
-                statement.setString(2, lname);
-                statement.setString(3, id);
+            PreparedStatement statement = connect.prepareStatement(sql);
+            statement.setString(1, fname);
+            statement.setString(2, lname);
+            statement.setString(3, id);
 
-                rowsInserted = statement.executeUpdate();
+            rowsInserted = statement.executeUpdate();
 
-                Log.i("thesuccess", "this indeed worked");
+            Log.i("thesuccess", "this indeed worked");
 
         }catch (SQLException e){
             Log.i("thesuccess", e.getMessage());
@@ -53,20 +54,17 @@ public class AddCandiate extends AppCompatActivity {
             Log.i("thesuccess", "the toster call works");
         }
 
-        if(rowsInserted > 1){
-            Toast.makeText(this, "Candidate add success", Toast.LENGTH_SHORT).show();
+        if(rowsInserted > 0){
             // TODO: 7/2/2023 do a popup instead of toast
 
-            /*
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Your message here").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                // do things when the user clicks OK
-            }
-        });
-        AlertDialog alert = builder.create();
-        alert.show();
-             */
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("Candidate was added successfully").setCancelable(true).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                }
+            });
+            AlertDialog alert = builder.create();
+            alert.show();
+
         }
 
 

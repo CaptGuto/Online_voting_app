@@ -1,6 +1,13 @@
 package com.example.online_voting_app;
 
+import android.os.Build;
+import android.util.Log;
+
 import java.security.SecureRandom;
+import java.util.Base64;
+
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
 
 public class PasswordGenerator {
     //defining the list of characters the password can contain
@@ -19,4 +26,8 @@ public class PasswordGenerator {
 
         return password.toString();
     }
+
+
+    //Open source code used !!!
+
 }

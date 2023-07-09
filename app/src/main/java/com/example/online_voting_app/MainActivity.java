@@ -22,40 +22,31 @@ public class MainActivity extends AppCompatActivity {
 
     public void launchLogin(View V){
         //launch the login activity
-
-        Intent i = new Intent(this, OurLoginActivity2.class);
-        startActivity(i);
+        if(TimeCheck.checkVotingOpen()) {
+            Intent i = new Intent(this, OurLoginActivity2.class);
+            startActivity(i);
+        }
+        else {
+            Toast.makeText(this, "Voting is Closed", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void launchRegister(View v){
         //launch the Register Activity
+        if(TimeCheck.checkRegestrationTime()) {
+            Intent i = new Intent(this, registerActivity.class);
+            startActivity(i);
+        }
+        else {
+            Toast.makeText(this, "Registration is Closed", Toast.LENGTH_SHORT).show();
+        }
 
-        Intent i = new Intent(this, registerActivity.class);
-        startActivity(i);
     }
 
     public void launchResult (View v) {
         //launching the view result activity
-        boolean timeIsRight = false;
 
-        String sql = "select voteEnd from timer";
-        Connection connected;
-        connected = dbconnection.Initiate();
-
-        try {
-            PreparedStatement statement = connected.prepareStatement(sql);
-            ResultSet result = statement.executeQuery();
-
-            if (result.next()) {
-                timeIsRight = result.getBoolean("VoteEnd");
-
-            }
-        }catch (SQLException e){
-            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
-        }
-
-
-        if (timeIsRight) {
+        if (TimeCheck.checkVoteEnd()) {
             Intent i = new Intent(this, viewResultActivity.class);
             startActivity(i);
 
@@ -71,4 +62,6 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(this, AdminLoginActivity.class);
         startActivity(i);
     }
+
+
 }

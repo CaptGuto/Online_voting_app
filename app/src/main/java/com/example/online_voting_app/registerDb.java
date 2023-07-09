@@ -146,6 +146,7 @@ public class registerDb {
                 statement.setString(3, id);
                 statement.setInt(4, Integer.parseInt(Age));
                 statement.setString(5, gender);
+                Log.i("thesuccess",password);
                 statement.setString(6, password);
                 rowsInserted = statement.executeUpdate();
 
@@ -176,9 +177,9 @@ public class registerDb {
         boolean voted = false;
 
         try {
-        PreparedStatement statement = conn.prepareStatement(sql);
-        statement.setString(1, ID);
-        ResultSet result = statement.executeQuery();
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, ID);
+            ResultSet result = statement.executeQuery();
 
             if (result.next()) {
                 fName = result.getString("fname");
@@ -189,7 +190,7 @@ public class registerDb {
 
             }
         }catch (SQLException e){
-            Log.i("thesuccess", e.getMessage()); 
+            Log.i("thesuccess", e.getMessage());
         }
 
         if(id.isEmpty()){

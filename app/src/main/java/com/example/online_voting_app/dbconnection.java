@@ -12,7 +12,7 @@ public class dbconnection {
     public static Connection Initiate() {
 
         Log.i("thesuccess", "this method has been called");
-        String url = "jdbc:mysql://10.9.155.146/VOTE";
+        String url = "jdbc:mysql://10.9.212.252/VOTE";
         String username = "voting";
         String password = "qwertyuiop0987654321";
         Connection conn = null;

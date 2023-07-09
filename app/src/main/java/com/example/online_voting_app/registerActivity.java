@@ -55,8 +55,6 @@ public class registerActivity extends AppCompatActivity {
             if(citizeExists){ // if the citizenExist returns true(meaning with the above initiation of the registerdb class it has found id, fname, lname for it
                 Toast.makeText(this, "The check was successful", Toast.LENGTH_SHORT).show();
 
-
-                // TODO: 6/27/2023 do the actual registering on the database
                 if(registeration.registerVoter(myPassword)){
                     //Passing the name, id, and password to next activity
                     i.putExtra("fname", fname);
@@ -66,10 +64,6 @@ public class registerActivity extends AppCompatActivity {
                     i.putExtra("ID", ID);
 
                     i.putExtra("Password", myPassword);
-
-
-
-                    // TODO: 6/27/2023 get the data of the citizens age and gender as an addition
 
                     startActivity(i);
                 }
@@ -88,24 +82,6 @@ public class registerActivity extends AppCompatActivity {
 
     }
 
-    /*private static String generatePassword (int length)
-    {
-        //defining the list of characters the password can contain
-        final String charList = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-        SecureRandom random = new SecureRandom();
-        StringBuilder password = new StringBuilder();
-
-        //randomly choosing a character by each iteration of the loop and appending to the
-        //StringBuilder instance
-        for (int i = 0; i < length; i++)
-        {
-            int randomIndex = random.nextInt(charList.length());
-            password.append(charList.charAt(randomIndex));
-        }
-
-        return password.toString();
-    }*/
 
     public static void  toster(Context context, String message) {
 

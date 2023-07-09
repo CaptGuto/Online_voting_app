@@ -67,8 +67,8 @@ public class OurLoginActivity2 extends AppCompatActivity {
             Intent i = new Intent(this, voteActivity.class);
             startActivity(i);
 
-                Log.i("thesuccess", "this returns true");
-                userHasVoted(id);
+            Log.i("thesuccess", "this returns true");
+            userHasVoted(id);
 
             //if it returns true update the registered tables voted to true so that the user doesn't vote again!!!!!!!
             finish();
