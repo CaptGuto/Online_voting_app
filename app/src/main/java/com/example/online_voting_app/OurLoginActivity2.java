@@ -83,8 +83,6 @@ public class OurLoginActivity2 extends AppCompatActivity {
         }
 
     }
-
-    /////Don't think this is it's place!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     public void userHasVoted(String theid) {
         Connection conn;
         conn = dbconnection.Initiate();
@@ -102,9 +100,6 @@ public class OurLoginActivity2 extends AppCompatActivity {
         }catch (SQLException e){
             Log.i("thesuccess", e.getMessage());
         }
-
-
-
 
     }
 }
